@@ -1,6 +1,6 @@
 {
   "name": "allie",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "The base for an  accessible CSS framework.",
   "main": "index.js",
   "scripts": {
@@ -13,9 +13,9 @@
     "css",
     "framework"
   ],
-  "repository" :
-  { "type" : "git"
-  , "url" : "https://github.com/BartDelrue/allie"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BartDelrue/allie"
   },
   "author": "Bart Delrue <delrue.bart@gmail.com> (http://www.bart.cf)",
   "license": "ISC",
