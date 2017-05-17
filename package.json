@@ -18,7 +18,7 @@
     "url": "https://github.com/BartDelrue/allie"
   },
   "author": "Bart Delrue <delrue.bart@gmail.com> (http://www.bart.cf)",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "gulp": "^3.9.1"
   }
