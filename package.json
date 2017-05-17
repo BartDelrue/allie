@@ -13,6 +13,10 @@
     "css",
     "framework"
   ],
+  "repository" :
+  { "type" : "git"
+  , "url" : "https://github.com/BartDelrue/allie"
+  },
   "author": "Bart Delrue <delrue.bart@gmail.com> (http://www.bart.cf)",
   "license": "ISC",
   "devDependencies": {
