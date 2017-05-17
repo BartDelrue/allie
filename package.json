@@ -20,6 +20,10 @@
   "author": "Bart Delrue <delrue.bart@gmail.com> (http://www.bart.cf)",
   "license": "MIT",
   "devDependencies": {
-    "gulp": "^3.9.1"
+    "gulp": "^3.9.1",
+    "gulp-csslint": "^1.0.0",
+    "gulp-htmlhint": "^0.3.1",
+    "gulp-jshint": "^2.0.4",
+    "gulp-sass": "^3.1.0"
   }
 }

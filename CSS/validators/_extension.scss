@@ -1,0 +1,41 @@
+/**
+* The first element of an article must be a header
+----------------------------------------------------------------------
+*/
+
+
+article > *:first-child:not(h1)::after,
+article > *:first-child:not(h2)::after,
+article > *:first-child:not(h3)::after,
+article > *:first-child:not(h4)::after,
+article > *:first-child:not(h5)::after,
+article > *:first-child:not(h6)::after,
+section > *:first-child:not(h1)::after,
+section > *:first-child:not(h2)::after,
+section > *:first-child:not(h3)::after,
+section > *:first-child:not(h4)::after,
+section > *:first-child:not(h5)::after,
+section > *:first-child:not(h6)::after
+{
+  display: inline-block !important;
+  background: #dc143c !important;
+  padding: 0.25em !important;
+  font-family: 'comic sans ms', cursive !important;
+  color: #fff !important;
+  font-size: 14px !important;
+  text-shadow: none !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  content: 'The first element of an article must be a header';
+}
+
+
+/**
+* Images must have an alt text
+----------------------------------------------------------------------
+*/
+
+img:not([alt]){
+  border: 3px solid  #dc143c !important;
+  border-radius: 4px !important;
+}
