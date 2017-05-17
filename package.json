@@ -1,0 +1,21 @@
+{
+  "name": "allie",
+  "version": "1.0.0",
+  "description": "The base for an  accessible CSS framework.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "web",
+    "accessibility",
+    "a11y",
+    "css",
+    "framework"
+  ],
+  "author": "Bart Delrue <delrue.bart@gmail.com> (http://www.bart.cf)",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
+}
