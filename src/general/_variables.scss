@@ -1,0 +1,11 @@
+$shadow-color: rgba(0, 0, 0, .2);
+$black: rgba(88,88,88,1);
+
+// buttons
+$btn-color: #ddd;
+$btn--pressed-color: darken($btn-color, 15%);
+$btn--disabled-color: lighten($btn-color, 15%);
+
+// anchors
+$a-color: #3f9c95;
+$a--foreign-color: #9c9720;

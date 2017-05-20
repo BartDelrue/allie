@@ -1,8 +1,18 @@
 @charset "UTF-8";
 
+html,
+body,
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
 
 // general
+@import "general/variables";
+@import "general/mixins";
 @import "general/buttons";
+@import "general/anchors";
 
 // components
 @import "components/accordion";

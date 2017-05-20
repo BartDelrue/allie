@@ -1,1 +1,27 @@
-#id{color:blue}
+input[type='button'].btn,
+button.btn {
+  @include box-shadow(1px);
+  background-color: $btn-color;
+  border: 0;
+  margin: 0 .4rem;
+  padding: .4rem 1rem;
+
+  &[disabled],
+  &[disabled].btn--disabled {
+    background-color: $btn--disabled-color;
+    color: $btn-color;
+  }
+
+  &[aria-pressed='true'],
+  &[aria-pressed='true'].btn--pressed,
+  &:active {
+    background-color: $btn--pressed-color;
+  }
+
+  &:enabled {
+    &:focus,
+    &:hover {
+      @include box-shadow(3px);
+    }
+  }
+}
