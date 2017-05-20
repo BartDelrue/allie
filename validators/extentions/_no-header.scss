@@ -1,0 +1,48 @@
+/**
+* The first element of an article should be a header
+----------------------------------------------------------------------
+*/
+
+
+@mixin no_header--selectors {
+
+  //first elements
+  > p:nth-child(1),
+  > ul:nth-child(1),
+  > ol:nth-child(1),
+  > dl:nth-child(1),
+  > span:nth-child(1),
+  > strong:nth-child(1),
+  > b:nth-child(1),
+  > u:nth-child(1),
+  > i:nth-child(1),
+  > a:nth-child(1),
+  > input:nth-child(1),
+  > label:nth-child(1) {
+    @include warning('I think I lost my head');
+  }
+
+  //first element after an image which is the first element
+  > img:nth-child(1) {
+    + p, + ul, + ol, + dl, + span, + strong, + b, + u, + i, + a, + input, + label {
+      @include warning('I think I lost my head');
+    }
+  }
+}
+
+article {
+
+  //direct children
+  @include no_header--selectors;
+
+  //children of the first element which is a div or a section
+  div:nth-child(1), section:nth-child(1) {
+    @include no_header--selectors;
+  }
+
+  //children of the first div or section
+  //directly after an image which is the first child of an article
+  > img:nth-child(1) + div, > img:nth-child(1) + section {
+    @include warning('I think I lost my head');
+  }
+}

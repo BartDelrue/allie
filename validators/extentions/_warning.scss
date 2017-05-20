@@ -1,0 +1,18 @@
+@mixin warning($message) {
+
+  border: 2px solid purple !important;
+  border-radius: 2px !important;
+
+  &::after {
+    display: inline-block !important;
+    background: purple !important;
+    padding: 0.25em !important;
+    font-family: 'comic sans ms', cursive !important;
+    color: #fff !important;
+    font-size: 14px !important;
+    text-shadow: none !important;
+    font-weight: normal !important;
+    font-style: normal !important;
+    content: $message;
+  }
+}

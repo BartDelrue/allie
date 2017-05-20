@@ -6,15 +6,30 @@ var gulp = require('gulp'),
     htmlhint = require('gulp-htmlhint'),
     jshint = require('gulp-jshint'),
     csslint = require('gulp-csslint'),
-    sass = require('gulp-sass');
+    sass = require('gulp-sass'),
+    sasslint = require('gulp-sass-lint'),
+    webpack = require('gulp-webpack'),
+    cache = require('gulp-cached');
 
 const PATHS = {
     CSS: {
-        SRC : './CSS/*',
+        SRC : './src/allie.scss',
+        DEST : './'
+    },
+    CSS_VALIDATORS : {
+        SRC : './validators/validate.scss',
+        DEST : './'
+    },
+    CSS_COMPONENTS : {
+        SRC : './src/*/*.scss',
+        DEST : './'
+    },
+    JS_COMPONENTS : {
+        SRC : './src/*/*.js',
         DEST : './'
     },
     JS : {
-        SRC : './JS/*.js',
+        SRC : './src/allie.js',
         DEST : './'
     },
     HTML : {
@@ -23,34 +38,62 @@ const PATHS = {
     }
 };
 
-gulp.task('css', function () {
+gulp.task('watch', function () {
 
-    gulp.src(PATHS.CSS.SRC + "allie.scss")
-        .pipe(sass())
-        .pipe(csslint())
-        .pipe(csslint.formatter())
-        .pipe(gulp.dest(PATHS.CSS.DEST));
+    gulp.watch(PATHS.CSS_COMPONENTS.SRC, ['validate-css', 'bundle-css']);
+    gulp.watch(PATHS.CSS_VALIDATORS.SRC, ['bundle-css']);
+    gulp.watch(PATHS.CSS.SRC, ['bundle-css']);
 
-    gulp.src(PATHS.CSS.SRC + "validate.scss")
-        .pipe(sass())
-        // .pipe(csslint())
-        // .pipe(csslint.formatter())
-        .pipe(gulp.dest(PATHS.CSS.DEST));
+    gulp.watch(PATHS.JS_COMPONENTS.SRC, ['validate-js', 'bundle-js']);
+    gulp.watch(PATHS.JS.SRC, ['bundle-js']);
+
+    gulp.watch(PATHS.HTML.SRC, ['validate-html']);
 });
 
+gulp.task('bundle-css', function () {
 
-gulp.task('js', function () {
+    gulp.src(PATHS.CSS.SRC)
+        .pipe(sass())
+        .pipe(gulp.dest(PATHS.CSS.DEST));
+
+
+    gulp.src(PATHS.CSS_VALIDATORS.SRC)
+        .pipe(sass())
+        .pipe(gulp.dest(PATHS.CSS_VALIDATORS.DEST));
+});
+
+gulp.task('validate-css', function () {
+
+    gulp.src(PATHS.CSS_COMPONENTS.SRC)
+        .pipe(cache('validate-css'))
+        .pipe(sasslint())
+        .pipe(sasslint.format())
+
+});
+
+gulp.task('bundle-js', function () {
 
     gulp.src(PATHS.JS.SRC)
-        .pipe(jshint())
-        .pipe(jshint.reporter('default'))
+        .pipe(webpack({
+            output: {
+                filename: 'allie.js'
+            }
+        }))
         .pipe(gulp.dest(PATHS.JS.DEST));
 });
 
-gulp.task('html', function () {
+gulp.task('validate-js', function () {
+
+    gulp.src(PATHS.JS_COMPONENTS.SRC)
+        .pipe(cache('validate-js'))
+        .pipe(jshint())
+        .pipe(jshint.reporter('default'));
+});
+
+gulp.task('validate-html', function () {
 
     gulp.src(PATHS.HTML.SRC)
+        .pipe(cache('validate-html'))
         .pipe(htmlhint('.htmlhintrc'))
-        .pipe(jshint.reporter('default'))
-        .pipe(gulp.dest(PATHS.JS.DEST));
+        .pipe(htmlhint.reporter())
 });

@@ -1,0 +1,24 @@
+// Heydon Pickering's revenge.css
+// Included version dates from Apr 6, 2017
+// For more information: http://heydonworks.com/revenge_css_bookmarklet/
+
+@import "Revenge/_revenge";
+
+
+// Elad Shechter
+// Included version dates from Nov 27, 2013
+// For more information: http://elad2412.github.io/css-accessibility-validator/
+
+@import "CSS Accessibility Validator/_accessibility";
+
+
+// Our own extentions
+//
+//
+
+@import "extentions/_global";
+
+
+#id {
+  color: red;
+}
