@@ -9,7 +9,9 @@ var gulp = require('gulp'),
     sass = require('gulp-sass'),
     sasslint = require('gulp-sass-lint'),
     webpack = require('gulp-webpack'),
-    cache = require('gulp-cached');
+    cache = require('gulp-cached'),
+    a11y = require('gulp-accessibility'),
+    rename = require('gulp-rename');
 
 const PATHS = {
     CSS: {
@@ -96,4 +98,11 @@ gulp.task('validate-html', function () {
         .pipe(cache('validate-html'))
         .pipe(htmlhint('.htmlhintrc'))
         .pipe(htmlhint.reporter())
+        .pipe(a11y({
+            force:true,
+            reportLevels: {
+                notice: false,
+                warning: false,
+                error: true
+            }}))
 });

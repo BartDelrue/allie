@@ -4,3 +4,5 @@
 
 require('./components/_accordion');
 require('./components/_modal');
+require('./components/_navigation-drawer');
+require('./components/_tabs');
