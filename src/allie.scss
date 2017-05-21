@@ -8,6 +8,10 @@ ol {
   padding: 0;
 }
 
+[hidden]{
+  display: none;
+}
+
 // general
 @import "general/variables";
 @import "general/mixins";

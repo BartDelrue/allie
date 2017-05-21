@@ -1,0 +1,25 @@
+body > .modal[role='dialog'][aria-labelledby][data-modal] {
+  @include box-shadow(5px);
+  background-color: $white;
+  left: 10vw;
+  padding: 1.5rem;
+  position: absolute;
+  top: 10vh;
+  width: calc(100% - 20vw);
+  z-index: 999;
+
+  .modal__close-btn[data-modal-close] {
+    border-radius: 1rem;
+    margin: 1rem 0;
+  }
+}
+
+body > .modal-overlay[data-modal-overlay] {
+  background-color: transparentize($black, .2);
+  height: 100vh;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  z-index: 998;
+}

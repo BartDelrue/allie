@@ -73,7 +73,9 @@ gulp.task('validate-css', function () {
         'no-qualifying-elements': 0,
         'force-attribute-nesting': 0,
         'force-element-nesting': 0,
-        'force-pseudo-nesting': 0
+        'force-pseudo-nesting': 0,
+        'class-name-format' : 0,
+        'no-empty-rulesets' : 0
       }
     }))
     .pipe(sasslint.format())
@@ -95,7 +97,7 @@ gulp.task('validate-js', function () {
 
   gulp.src(PATHS.JS_COMPONENTS.SRC)
     .pipe(cache('validate-js'))
-    .pipe(jshint())
+    .pipe(jshint({esversion: 6}))
     .pipe(jshint.reporter('default'));
 });
 

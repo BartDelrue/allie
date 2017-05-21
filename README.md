@@ -1,4 +1,4 @@
-  <h1>Home</h1>
+  <h1>Allie</h1>
   <p>Allie was created as part of my bachelorthesis on increasing accessibility during development.</p>
   <p>This framework will guide you by means of strict CSS selectors, CSS files that validate your code and a series of Gulp tasks towards following the principles of universal design.</p>
   <p>Special thanks to Heydon Pickering and Elad Shechter for writing the used CSS files to validate html.</p>
