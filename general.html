@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Allie userguide - general</title>
+  <link rel="stylesheet" href="allie.css">
+  <link rel="stylesheet" href="validate.css">
+  <script src="allie.js"></script>
+  <style>
+    html {
+      font-family: sans-serif;
+      padding: 1rem;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    h1 {
+      padding: 1rem 0;
+      border-bottom: 2px solid grey;
+      font-size: 2rem;
+    }
+
+    h2 {
+      padding: .5rem 0;
+    }
+
+    dt {
+      padding: .5rem 0;
+    }
+
+    dd {
+      margin-bottom: 1.5rem;
+    }
+
+  </style>
+
+</head>
+<body>
+<a href="#main" class="a--skiplink">skip to main</a>
+<nav>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="#main" aria-describedby="current">General</a></li>
+  </ul>
+</nav>
+<main id="main">
+  <h1>General</h1>
+
+  <nav aria-labelledby="toc-heading" class="nav--sub">
+    <h2 id="toc-heading" aria-describedby="toc-asterix">Table of contents*</h2>
+    <ul>
+      <li><a href="#buttons">buttons</a></li>
+      <li><a href="#anchors">anchors</a></li>
+    </ul>
+    <p id="toc-asterix">*navigation elements of class nav--sub can only be styled if they have the attribute
+      aria-labelledby to indicate difference to the main navigational region...</p>
+  </nav>
+
+  <article id="buttons">
+    <h2>Buttons</h2>
+    <h3>block</h3>
+    <dl>
+      <dt>input[type=button].btn</dt>
+      <dd><input type="button" value="input[type=button]" class="btn"></dd>
+      <dt>button.btn</dt>
+      <dd>
+        <button class="btn">button</button>
+      </dd>
+      <dt>span.btn</dt>
+      <dd><span class="btn">span</span></dd>
+    </dl>
+    <h3>modifiers</h3>
+    <dl>
+      <dt>aria-pressed=true</dt>
+      <dd><input aria-pressed="true" type="button" value="input[type=button]" class="btn">
+        <button aria-pressed="true" class="btn">button</button>
+        <span aria-pressed="true">span</span></dd>
+      <dt>disabled</dt>
+      <dd><input disabled type="button" value="input[type=button]" class="btn">
+        <button disabled class="btn">button</button>
+        <span aria-disabled="true">span</span></dd>
+      <dt>hover or focused</dt>
+      <dd>try it out on the above</dd>
+    </dl>
+  </article>
+  <article id="anchors">
+    <h2>Anchors</h2>
+    <h3>block</h3>
+    <dl>
+      <dt>with href attribute</dt>
+      <dd><a href="404.html">404.html</a></dd>
+      <dt>with empty href attribute</dt>
+      <dd><a href="">where am I going?</a></dd>
+      <dt>without href attribute</dt>
+      <dd><a>what kind of anchor is this?</a></dd>
+
+    </dl>
+    <h3>modifiers</h3>
+    <dl>
+      <dt>same-page</dt>
+      <dd><a href="#main" aria-describedby="same">#target</a></dd>
+      <dt>current-page</dt>
+      <dd><a href="#main">not accessible</a> vs <a href="#main" aria-describedby="current">aria-describedby =
+        current</a></dd>
+      <dt>same-domain</dt>
+      <dd><a href="404.html">404.html</a></dd>
+      <dt>cross-domain or target _blank</dt>
+      <dd><a target="_blank" href="http://www.bart.cf" aria-describedby="foreign">my portfolio</a></dd>
+      <dt>skiplink</dt>
+      <dd>refresh and press tab</dd>
+    </dl>
+  </article>
+</main>
+<div hidden id="current">Current page</div>
+<div hidden id="foreign">Foreign page</div>
+<div hidden id="same">Same page</div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+html,
+body,
+ul,
+ol {
+  margin: 0;
+  padding: 0; }
+
+input[type='button'].btn,
+button.btn {
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+  background-color: #ddd;
+  border: 0;
+  margin: 0 .4rem;
+  padding: .4rem 1rem; }
+  input[type='button'].btn[disabled], input[type='button'].btn[disabled].btn--disabled,
+  button.btn[disabled],
+  button.btn[disabled].btn--disabled {
+    background-color: white;
+    color: #ddd; }
+  input[type='button'].btn[aria-pressed='true'], input[type='button'].btn[aria-pressed='true'].btn--pressed, input[type='button'].btn:active,
+  button.btn[aria-pressed='true'],
+  button.btn[aria-pressed='true'].btn--pressed,
+  button.btn:active {
+    background-color: #b7b7b7; }
+  input[type='button'].btn:enabled:focus, input[type='button'].btn:enabled:hover,
+  button.btn:enabled:focus,
+  button.btn:enabled:hover {
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2); }
+
+a[href]:not([href='']) {
+  color: #3f9c95; }
+  a[href]:not([href=''])[aria-describedby='foreign'][href^='http'], a[href]:not([href=''])[aria-describedby='foreign'][target='_blanc'] {
+    color: #9c9720; }
+    a[href]:not([href=''])[aria-describedby='foreign'][href^='http']:hover, a[href]:not([href=''])[aria-describedby='foreign'][href^='http']:focus, a[href]:not([href=''])[aria-describedby='foreign'][target='_blanc']:hover, a[href]:not([href=''])[aria-describedby='foreign'][target='_blanc']:focus {
+      background-color: #f4f2c7;
+      color: #5d5a13;
+      text-decoration: none; }
+  a[href]:not([href=''])[aria-describedby='same'][href^='#'] {
+    border: 1px dotted #3f9c95;
+    padding: .1rem .2rem; }
+  a[href]:not([href=''])[aria-describedby^='current'][href^='#'], a[href]:not([href=''])[aria-describedby^='current'][href^='#'].current {
+    background-color: #e5f5f3;
+    color: #296661;
+    text-decoration: none; }
+  a[href]:not([href=''])[href^='#'].a--skiplink {
+    left: -100%;
+    position: absolute;
+    top: -100%; }
+    a[href]:not([href=''])[href^='#'].a--skiplink:focus {
+      left: 0;
+      top: 0; }
+  a[href]:not([href='']):focus, a[href]:not([href='']):hover {
+    background-color: #e5f5f3;
+    color: #296661;
+    text-decoration: none; }
+
+nav.nav--sub[aria-labelledby] {
+  border: 1px dotted #585858;
+  padding: 1rem; }
+
+#id {
+  color: blue; }

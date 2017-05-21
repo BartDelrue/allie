@@ -1,0 +1,6 @@
+nav {
+  &.nav--sub[aria-labelledby] {
+    border: 1px dotted $black;
+    padding: 1rem;
+  }
+}

@@ -14,12 +14,16 @@ const PATHS = {
     SRC: './src/allie.scss',
     DEST: './'
   },
+  CSS_COMPONENTS: {
+    SRC: './src/*/*.scss',
+    DEST: './'
+  },
   CSS_VALIDATORS: {
     SRC: './validators/validate.scss',
     DEST: './'
   },
-  CSS_COMPONENTS: {
-    SRC: './src/*/*.scss',
+  CSS_VALIDATORS_COMPONENTS: {
+    SRC: './validators/**/*.scss',
     DEST: './'
   },
   JS_COMPONENTS: {
@@ -39,7 +43,7 @@ const PATHS = {
 gulp.task('watch', function () {
 
   gulp.watch(PATHS.CSS_COMPONENTS.SRC, ['validate-css', 'bundle-css']);
-  gulp.watch(PATHS.CSS_VALIDATORS.SRC, ['bundle-css']);
+  gulp.watch(PATHS.CSS_VALIDATORS_COMPONENTS.SRC, ['bundle-css']);
   gulp.watch(PATHS.CSS.SRC, ['bundle-css']);
 
   gulp.watch(PATHS.JS_COMPONENTS.SRC, ['validate-js', 'bundle-js']);

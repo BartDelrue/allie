@@ -8,7 +8,8 @@ a[href]:not([href='']) {
 
   color: $a-color;
 
-  &[href^='http'] {
+  &[aria-describedby='foreign'][href^='http'],
+  &[aria-describedby='foreign'][target='_blanc'] {
     color: $a--foreign-color;
 
     &:hover,
@@ -17,26 +18,29 @@ a[href]:not([href='']) {
     }
   }
 
-  &[href^='#'] {
-
+  &[aria-describedby='same'][href^='#'] {
     border: 1px dotted $a-color;
     padding: .1rem .2rem;
   }
 
-  &[aria-describedby='current page'][href^='#'],
-  &[aria-describedby='current page'][href^='#'].current {
+  &[aria-describedby^='current'][href^='#'],
+  &[aria-describedby^='current'][href^='#'].current {
     @include hover($a-color);
+  }
+
+  &[href^='#'].a--skiplink {
+    left: -100%;
+    position: absolute;
+    top: -100%;
+
+    &:focus {
+      left: 0;
+      top: 0;
+    }
   }
 
   &:focus,
   &:hover {
     @include hover($a-color);
-  }
-}
-
-nav {
-  &.nav--sub[aria-labelledby] {
-    border: 1px dotted $black;
-    padding: 1rem;
   }
 }
