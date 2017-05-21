@@ -122,7 +122,7 @@
 
 	      bodyChildren.forEach(child=>{
 	        child.setAttribute('aria-hidden',true);
-	      })
+	      });
 	    }
 	  };
 

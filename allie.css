@@ -61,9 +61,6 @@ nav.nav--sub[aria-labelledby] {
   border: 1px dotted #585858;
   padding: 1rem; }
 
-#id {
-  color: blue; }
-
 body > .modal[role='dialog'][aria-labelledby][data-modal] {
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
   background-color: white;
