@@ -3,7 +3,7 @@ body > .modal[role='dialog'][aria-labelledby][data-modal] {
   background-color: $white;
   left: 10vw;
   padding: 1.5rem;
-  position: absolute;
+  position: fixed;
   top: 10vh;
   width: calc(100% - 20vw);
   z-index: 999;
@@ -16,10 +16,12 @@ body > .modal[role='dialog'][aria-labelledby][data-modal] {
 
 body > .modal-overlay[data-modal-overlay] {
   background-color: transparentize($black, .2);
-  height: 100vh;
+  height: 100%;
   left: 0;
-  position: absolute;
+  min-height: 100vh;
+  min-width: 100vh;
+  position: fixed;
   top: 0;
-  width: 100vw;
+  width: 100%;
   z-index: 998;
 }
