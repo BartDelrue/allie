@@ -119,7 +119,7 @@ var myLibrary =
 	      modalTarget.tabIndex = -1;
 	      modalTarget.focus();
 
-	      focusableElems = modalTarget.querySelectorAll('a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), [tabindex="0"]');
+	      focusableElems = modalTarget.querySelectorAll('a[href], area[href], input:not([disabled]):not([hidden]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), [tabindex="0"]');
 	      focusableElems = Array.prototype.slice.call(focusableElems);
 
 	      document.addEventListener('keydown', handleKeyboardInput);
