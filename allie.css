@@ -86,7 +86,6 @@ body > .modal-overlay[data-modal-overlay] {
 .navi-drawer {
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
   background: white;
-  display: none;
   height: 100vh;
   left: auto;
   max-width: 340px;
@@ -99,6 +98,15 @@ body > .modal-overlay[data-modal-overlay] {
     margin: 1.5rem; }
 
 .navi-drawer--visible {
-  display: block;
   left: 0;
-  right: auto; }
+  right: auto;
+  z-index: 999; }
+
+.navi-drawer-overlay {
+  background-color: rgba(88, 88, 88, 0.8);
+  height: 100vh;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 998; }

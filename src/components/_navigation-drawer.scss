@@ -1,7 +1,6 @@
 .navi-drawer {
   @include box-shadow(2px);
   background: $white;
-  display: none;
   height: 100vh;
   left: auto;
   max-width: 340px;
@@ -17,7 +16,17 @@
 }
 
 .navi-drawer--visible {
-  display: block;
   left: 0;
   right: auto;
+  z-index: 999;
+}
+
+.navi-drawer-overlay {
+  background-color: transparentize($black, .2);
+  height: 100vh;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 998;
 }
