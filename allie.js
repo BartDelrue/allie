@@ -1,6 +1,6 @@
 'use strict';
 
-var myLibrary =
+var allie =
 /******/function (modules) {
 	// webpackBootstrap
 	/******/ // The module cache
@@ -174,7 +174,8 @@ var myLibrary =
 
 		var smooth = true;
 		var duration = 0.75;
-		var treshhold = 480;
+		var threshold = 480;
+		var swipeEnabled = true;
 		var width = void 0,
 		    closeNavi = void 0,
 		    openNavi = void 0;
@@ -183,7 +184,7 @@ var myLibrary =
 			duration = d;
 		};
 		var setTreshhold = function setTreshhold(t) {
-			treshhold = t;
+			threshold = t;
 		};
 		var isSmooth = function isSmooth(bool) {
 			smooth = bool === true;
@@ -255,6 +256,7 @@ var myLibrary =
 			if (e) {
 				e.preventDefault();
 				trigger = e.target;
+				trigger.setAttribute('aria-expanded', true);
 			}
 
 			if (drawer && overlay) {
@@ -318,6 +320,7 @@ var myLibrary =
 				for (var i = bodyChildren.length; i > 0; i--) {
 					bodyChildren[i - 1].setAttribute('aria-hidden', false);
 				}if (trigger) {
+					trigger.setAttribute('aria-expanded', false);
 					trigger.focus();
 					trigger = null;
 				} else {
@@ -342,24 +345,32 @@ var myLibrary =
 			triggers[i - 1].addEventListener('click', openDrawer);
 		}for (var _i2 = closeBtns.length; _i2 > 0; _i2--) {
 			closeBtns[_i2 - 1].addEventListener('click', closeDrawer);
-		}if (drawer) {
-			document.addEventListener('touchstart', function (e) {
-				var pos = e.changedTouches[0].pageX;
+		}var enableSwipe = function enableSwipe(enable, width) {
 
-				if (pos <= 15) {
+			swipeEnabled = enable === true;
+			threshold = width ? width : threshold;
 
-					drawer.hidden = false;
-					width = drawer.getBoundingClientRect().width;
-					drawer.style.left = -width + 'px';
-					drawer.className += ' navi-drawer--visible';
+			if (enable && drawer) {
+				document.addEventListener('touchstart', function (e) {
 
-					document.addEventListener('touchmove', swipeDrawer);
-				} else document.removeEventListener('touchmove', swipeDrawer);
-			});
-		}
+					if (!swipeEnabled || window.innerWidth > threshold) return;
+					var pos = e.changedTouches[0].pageX;
+
+					if (pos <= 15) {
+
+						drawer.hidden = false;
+						width = drawer.getBoundingClientRect().width;
+						drawer.style.left = -width + 'px';
+						drawer.className += ' navi-drawer--visible';
+
+						document.addEventListener('touchmove', swipeDrawer);
+					} else document.removeEventListener('touchmove', swipeDrawer);
+				});
+			}
+		};
 
 		return {
-			setDuration: setDuration, isSmooth: isSmooth
+			setDuration: setDuration, isSmooth: isSmooth, enableSwipe: enableSwipe
 		};
 	}();
 

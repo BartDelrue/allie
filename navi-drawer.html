@@ -34,8 +34,8 @@
       margin-bottom: 1.5rem;
     }
 
-    .navi-drawer:focus, *:focus{
-      border: 2px solid red;
+    .navi-drawer:focus, *:focus {
+      border: 2px solid red !important;
     }
 
   </style>
@@ -66,7 +66,6 @@
       <li><a href="modal.html">Modal</a></li>
       <li><a href="#main" aria-describedby="current">Navigation drawer</a></li>
     </ul>
-    <button data-navi-drawer-trigger>open drawer</button>
   </nav>
 
 </header>
@@ -83,12 +82,36 @@
       <li>Change focus upon opening</li>
       <li>Place focus back to the trigger after closing</li>
       <li>Set other content as aria-hidden=true while open</li>
-      <li>Can only be triggered by buttons</li>
+      <li>Can be triggered by a button or by swiping from the left</li>
+      <li>The button must communicate the state of the menu</li>
+      <li>The button must have a label</li>
     </ul>
     <h2>example</h2>
-    <p>Elements specifiek to the modal component receive a clear red border on focus. <br>
-    This is for demonstration purposes.</p>
 
+    <dl>
+      <dt>Preferably always use accompany an icon with text</dt>
+      <dd>    <button data-navi-drawer-trigger aria-expanded="false">
+        <svg class="icon">
+          <use xlink:href="#hamburger"></use>
+        </svg>
+        <span>menu</span>
+      </button></dd>
+      <dt>If this is not possible, don't forget the aria-label attribute!</dt>
+      <dd>    <button data-navi-drawer-trigger aria-expanded="false" aria-label="menu">
+        <svg class="icon">
+          <use xlink:href="#hamburger"></use>
+        </svg>
+      </button></dd>
+    </dl>
+
+    <p>
+      options available:
+    </p>
+    <ul><li>allie.naviDrawer.setDuration(seconds) default = 0.5</li>
+    <li>allie.naviDrawer.isSmooth(true)</li>
+    <li>allie.naviDrawer.enableSwipe(true, threshold) default = false, 480</li></ul>
+    <p>Elements specifiek to the modal component receive a clear red border on focus. <br>
+      This is for demonstration purposes.</p>
 
   </article>
 
@@ -98,9 +121,19 @@
 <div hidden id="foreign">Foreign page</div>
 <div hidden id="same">Same page</div>
 
+
+<svg style="display: none" hidden>
+  <symbol id="hamburger" viewBox="0 0 32 32">
+    <path
+      d="M4,10h24c1.104,0,2-0.896,2-2s-0.896-2-2-2H4C2.896,6,2,6.896,2,8S2.896,10,4,10z M28,14H4c-1.104,0-2,0.896-2,2  s0.896,2,2,2h24c1.104,0,2-0.896,2-2S29.104,14,28,14z M28,22H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h24c1.104,0,2-0.896,2-2  S29.104,22,28,22z"></path>
+  </symbol>
+</svg>
+
 <script src="allie.js"></script>
 <script>
-  myLibrary.naviDrawer.setDuration(1);
+  allie.naviDrawer.setDuration(1);
+  allie.naviDrawer.isSmooth(true);
+  allie.naviDrawer.enableSwipe(true, 500);
 </script>
 </body>
 </html>

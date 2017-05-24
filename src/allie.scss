@@ -12,9 +12,12 @@ ol {
   display: none;
 }
 
+
+
 // general
 @import "general/variables";
 @import "general/mixins";
+@import "general/typography";
 @import "general/buttons";
 @import "general/anchors";
 @import "general/regions";

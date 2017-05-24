@@ -8,6 +8,12 @@ ol {
 [hidden] {
   display: none; }
 
+svg.icon {
+  fill: currentColor;
+  height: 1em;
+  vertical-align: text-bottom;
+  width: 1em; }
+
 input[type='button'].btn,
 button.btn {
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
@@ -112,3 +118,18 @@ body > .modal-overlay[data-modal-overlay] {
   top: 0;
   width: 100vw;
   z-index: 998; }
+
+input[type='button'][aria-expanded][data-navi-drawer-trigger],
+button[aria-expanded][data-navi-drawer-trigger] {
+  background-color: transparent;
+  border: 1px solid #585858;
+  padding: .5rem 1rem;
+  transition-duration: .2s;
+  transition-property: fill, color, background-color;
+  transition-timing-function: ease-in; }
+  input[type='button'][aria-expanded][data-navi-drawer-trigger]:focus, input[type='button'][aria-expanded][data-navi-drawer-trigger]:hover,
+  button[aria-expanded][data-navi-drawer-trigger]:focus,
+  button[aria-expanded][data-navi-drawer-trigger]:hover {
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+    background-color: #585858;
+    color: white; }

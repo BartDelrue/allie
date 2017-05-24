@@ -90,7 +90,7 @@ gulp.task('bundle-js', function () {
     .pipe(webpack({
       output: {
         filename: 'allie.js',
-        library: 'myLibrary',
+        library: 'allie',
         libraryTarget: 'var',
       },
     }))

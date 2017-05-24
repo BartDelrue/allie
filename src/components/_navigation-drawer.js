@@ -12,14 +12,16 @@ let naviDrawer = (() => {
 
   let smooth = true;
   let duration = 0.75;
-  let treshhold = 480;
+  let threshold = 480;
+  let swipeEnabled = true;
   let width, closeNavi, openNavi;
+
 
   let setDuration = (d) => {
     duration = d;
   };
   let setTreshhold = (t) => {
-    treshhold = t;
+    threshold = t;
   };
   let isSmooth = (bool) => {
     smooth = (bool === true);
@@ -100,6 +102,7 @@ let naviDrawer = (() => {
     if (e) {
       e.preventDefault();
       trigger = e.target;
+      trigger.setAttribute('aria-expanded', true);
     }
 
     if (drawer && overlay) {
@@ -131,8 +134,8 @@ let naviDrawer = (() => {
 
       document.addEventListener('keydown', handleKeyboardInput);
 
-      for(let i = bodyChildren.length; i>0; i--)
-        bodyChildren[i-1].setAttribute('aria-hidden', true);
+      for (let i = bodyChildren.length; i > 0; i--)
+        bodyChildren[i - 1].setAttribute('aria-hidden', true);
 
     }
   };
@@ -163,14 +166,15 @@ let naviDrawer = (() => {
 
       document.removeEventListener('keydown', handleKeyboardInput);
 
-      for(let i = bodyChildren.length; i>0; i--)
-        bodyChildren[i-1].setAttribute('aria-hidden', false);
+      for (let i = bodyChildren.length; i > 0; i--)
+        bodyChildren[i - 1].setAttribute('aria-hidden', false);
 
-      if(trigger){
+      if (trigger) {
+        trigger.setAttribute('aria-expanded', false);
         trigger.focus();
         trigger = null;
       }
-      else{
+      else {
         document.querySelector('main').tabIndex = -1;
         document.querySelector('main').focus();
       }
@@ -178,11 +182,11 @@ let naviDrawer = (() => {
     }
   };
 
-  let swipeDrawer = (e)=>{
+  let swipeDrawer = (e) => {
     let pos = e.changedTouches[0].pageX;
-    drawer.style.left = (-width+pos)  + 'px';
+    drawer.style.left = (-width + pos) + 'px';
 
-    if(pos > 80 || pos >= width){
+    if (pos > 80 || pos >= width) {
       startPos = 80;
       document.removeEventListener('touchmove', swipeDrawer);
       openDrawer()
@@ -196,26 +200,34 @@ let naviDrawer = (() => {
     closeBtns[i - 1].addEventListener('click', closeDrawer);
 
 
-  if (drawer) {
-    document.addEventListener('touchstart', (e) => {
-      let pos = e.changedTouches[0].pageX;
+  let enableSwipe = (enable, width) => {
 
-      if(pos <= 15){
+    swipeEnabled = enable === true;
+    threshold = width ? width : threshold;
 
-        drawer.hidden = false;
-        width = drawer.getBoundingClientRect().width;
-        drawer.style.left = -width + 'px';
-        drawer.className += ' navi-drawer--visible';
+    if (enable && drawer) {
+      document.addEventListener('touchstart', (e) => {
 
-        document.addEventListener('touchmove', swipeDrawer);
-      }
-      else
-        document.removeEventListener('touchmove', swipeDrawer);
-    });
-  }
+        if (!swipeEnabled || window.innerWidth > threshold) return;
+        let pos = e.changedTouches[0].pageX;
+
+        if (pos <= 15) {
+
+          drawer.hidden = false;
+          width = drawer.getBoundingClientRect().width;
+          drawer.style.left = -width + 'px';
+          drawer.className += ' navi-drawer--visible';
+
+          document.addEventListener('touchmove', swipeDrawer);
+        }
+        else
+          document.removeEventListener('touchmove', swipeDrawer);
+      });
+    }
+  };
 
   return {
-    setDuration, isSmooth
+    setDuration, isSmooth, enableSwipe
   };
 })();
 

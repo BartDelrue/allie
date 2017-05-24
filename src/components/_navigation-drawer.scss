@@ -30,3 +30,22 @@
   width: 100vw;
   z-index: 998;
 }
+
+input[type='button'][aria-expanded][data-navi-drawer-trigger],
+button[aria-expanded][data-navi-drawer-trigger] {
+
+  background-color: transparent;
+  border: 1px solid $black;
+  padding: .5rem 1rem;
+  transition-duration: .2s;
+  transition-property: fill, color, background-color;
+  transition-timing-function: ease-in;
+
+  &:focus,
+  &:hover {
+    @include box-shadow(3px);
+
+    background-color: $black;
+    color: $white;
+  }
+}
