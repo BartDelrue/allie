@@ -1,4 +1,4 @@
-(() => {
+let modal = (() => {
   'use strict';
 
   let modalOverlay = document.querySelector('[data-modal-overlay');
@@ -84,10 +84,14 @@
     closeBtn.addEventListener('click', closeModal);
   });
 
+  if(modalOverlay)
   modalOverlay.addEventListener('click', closeModal);
 
+
+  return {};
 })();
 
+module.exports = modal;
 
 
 

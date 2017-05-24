@@ -2,7 +2,10 @@
  * Created by Bart on 20/05/2017.
  */
 
-require('./components/_accordion');
-require('./components/_modal');
-require('./components/_navigation-drawer');
-require('./components/_tabs');
+module.exports = {
+  accordion: require('./components/_accordion'),
+  modal: require('./components/_modal'),
+  naviDrawer: require('./components/_navigation-drawer'),
+  tabs: require('./components/_tabs')
+};
+

@@ -5,6 +5,7 @@ var gulp = require('gulp'),
   sass = require('gulp-sass'),
   sasslint = require('gulp-sass-lint'),
   webpack = require('gulp-webpack'),
+  babel = require('gulp-babel'),
   cache = require('gulp-cached'),
   a11y = require('gulp-accessibility'),
   rename = require('gulp-rename');
@@ -74,8 +75,8 @@ gulp.task('validate-css', function () {
         'force-attribute-nesting': 0,
         'force-element-nesting': 0,
         'force-pseudo-nesting': 0,
-        'class-name-format' : 0,
-        'no-empty-rulesets' : 0
+        'class-name-format': 0,
+        'no-empty-rulesets': 0
       }
     }))
     .pipe(sasslint.format())
@@ -85,10 +86,15 @@ gulp.task('validate-css', function () {
 gulp.task('bundle-js', function () {
 
   gulp.src(PATHS.JS.SRC)
+
+
+    .pipe(babel({presets: ['es2015']}))
     .pipe(webpack({
       output: {
-        filename: 'allie.js'
-      }
+        filename: 'allie.js',
+        library: 'myLibrary',
+        libraryTarget: 'var',
+      },
     }))
     .pipe(gulp.dest(PATHS.JS.DEST));
 });

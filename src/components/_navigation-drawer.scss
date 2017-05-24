@@ -1,0 +1,23 @@
+.navi-drawer {
+  @include box-shadow(2px);
+  background: $white;
+  display: none;
+  height: 100vh;
+  left: auto;
+  max-width: 340px;
+  min-width: 240px;
+  position: fixed;
+  right: 100vw;
+  top: 0;
+  width: 80vw;
+
+  .navi-drawer__links-list {
+    margin: 1.5rem;
+  }
+}
+
+.navi-drawer--visible {
+  display: block;
+  left: 0;
+  right: auto;
+}

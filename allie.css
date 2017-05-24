@@ -10,7 +10,7 @@ ol {
 
 input[type='button'].btn,
 button.btn {
-  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
   background-color: #ddd;
   border: 0;
   margin: 0 .4rem;
@@ -28,7 +28,7 @@ button.btn {
   input[type='button'].btn:enabled:focus, input[type='button'].btn:enabled:hover,
   button.btn:enabled:focus,
   button.btn:enabled:hover {
-    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2); }
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2); }
 
 a[href]:not([href='']) {
   color: #3f9c95; }
@@ -62,7 +62,7 @@ nav.nav--sub[aria-labelledby] {
   padding: 1rem; }
 
 body > .modal[role='dialog'][aria-labelledby][data-modal] {
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   background-color: white;
   left: 10vw;
   padding: 1.5rem;
@@ -82,3 +82,23 @@ body > .modal-overlay[data-modal-overlay] {
   top: 0;
   width: 100vw;
   z-index: 998; }
+
+.navi-drawer {
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+  background: white;
+  display: none;
+  height: 100vh;
+  left: auto;
+  max-width: 340px;
+  min-width: 240px;
+  position: fixed;
+  right: 100vw;
+  top: 0;
+  width: 80vw; }
+  .navi-drawer .navi-drawer__links-list {
+    margin: 1.5rem; }
+
+.navi-drawer--visible {
+  display: block;
+  left: 0;
+  right: auto; }

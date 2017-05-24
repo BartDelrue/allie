@@ -20,9 +20,12 @@
   "author": "Bart Delrue <delrue.bart@gmail.com> (http://www.bart.cf)",
   "license": "MIT",
   "devDependencies": {
+    "babel-preset-es2015": "^6.24.1",
+    "exports-loader": "^0.6.4",
     "gulp": "^3.9.1",
     "gulp-a11y": "^0.1.2",
     "gulp-accessibility": "^3.0.1",
+    "gulp-babel": "^6.1.2",
     "gulp-cached": "^1.1.1",
     "gulp-csslint": "^1.0.0",
     "gulp-htmlhint": "^0.3.1",
