@@ -54,9 +54,8 @@ let modal = (() => {
 
       document.addEventListener('keydown', handleKeyboardInput);
 
-      bodyChildren.forEach(child=>{
-        child.setAttribute('aria-hidden',true);
-      });
+      for(let i = bodyChildren.length; i>0; i--)
+        bodyChildren[i-1].setAttribute('aria-hidden', true);
     }
   };
 
@@ -69,24 +68,22 @@ let modal = (() => {
 
     document.removeEventListener('keydown', handleKeyboardInput);
 
-    bodyChildren.forEach(child=>{
-      child.setAttribute('aria-hidden',false);
-    });
+    for(let i = bodyChildren.length; i>0; i--)
+      bodyChildren[i-1].setAttribute('aria-hidden', false);
 
     modalTrigger.focus();
 
   };
 
-  modalTriggers.forEach(modal => {
-    modal.addEventListener('click', openModal);
-  });
+  for (let i = modalTriggers.length; i > 0; i--)
+    modalTriggers[i - 1].addEventListener('click', openModal);
 
-  closeBtns.forEach(closeBtn => {
-    closeBtn.addEventListener('click', closeModal);
-  });
+  for (let i = closeBtns.length; i > 0; i--)
+    closeBtns[i - 1].addEventListener('click', closeModal);
 
-  if(modalOverlay)
-  modalOverlay.addEventListener('click', closeModal);
+
+  if (modalOverlay)
+    modalOverlay.addEventListener('click', closeModal);
 
 
   return {};

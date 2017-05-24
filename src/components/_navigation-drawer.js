@@ -131,9 +131,9 @@ let naviDrawer = (() => {
 
       document.addEventListener('keydown', handleKeyboardInput);
 
-      bodyChildren.forEach(child => {
-        child.setAttribute('aria-hidden', true);
-      });
+      for(let i = bodyChildren.length; i>0; i--)
+        bodyChildren[i-1].setAttribute('aria-hidden', true);
+
     }
   };
 
@@ -163,9 +163,8 @@ let naviDrawer = (() => {
 
       document.removeEventListener('keydown', handleKeyboardInput);
 
-      bodyChildren.forEach(child => {
-        child.setAttribute('aria-hidden', false);
-      });
+      for(let i = bodyChildren.length; i>0; i--)
+        bodyChildren[i-1].setAttribute('aria-hidden', false);
 
       if(trigger){
         trigger.focus();
@@ -179,22 +178,31 @@ let naviDrawer = (() => {
     }
   };
 
-  triggers.forEach(trigger => {
-    trigger.addEventListener('click', openDrawer);
-  });
+  let swipeDrawer = (e)=>{
+    let pos = e.changedTouches[0].pageX;
+    drawer.style.left = (-width+pos)  + 'px';
 
-  closeBtns.forEach(closeBtn => {
-    closeBtn.addEventListener('click', closeDrawer);
-  });
+    if(pos > 80 || pos >= width){
+      startPos = 80;
+      document.removeEventListener('touchmove', swipeDrawer);
+      openDrawer()
+    }
+  };
+
+  for (let i = triggers.length; i > 0; i--)
+    triggers[i - 1].addEventListener('click', openDrawer);
+
+  for (let i = closeBtns.length; i > 0; i--)
+    closeBtns[i - 1].addEventListener('click', closeDrawer);
+
 
   if (drawer) {
     document.addEventListener('touchstart', (e) => {
       let pos = e.changedTouches[0].pageX;
 
-      if(pos <= 5){
+      if(pos <= 15){
 
         drawer.hidden = false;
-
         width = drawer.getBoundingClientRect().width;
         drawer.style.left = -width + 'px';
         drawer.className += ' navi-drawer--visible';
@@ -204,19 +212,7 @@ let naviDrawer = (() => {
       else
         document.removeEventListener('touchmove', swipeDrawer);
     });
-
   }
-
-  let swipeDrawer = (e)=>{
-    let pos = e.changedTouches[0].pageX;
-    drawer.style.left = (-width+pos)  + 'px';
-
-    if(pos > 80){
-      startPos = 80;
-      document.removeEventListener('touchmove', swipeDrawer);
-      openDrawer()
-    }
-  };
 
   return {
     setDuration, isSmooth

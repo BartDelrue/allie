@@ -87,8 +87,6 @@ gulp.task('bundle-js', function () {
 
   gulp.src(PATHS.JS.SRC)
 
-
-    .pipe(babel({presets: ['es2015']}))
     .pipe(webpack({
       output: {
         filename: 'allie.js',
@@ -96,6 +94,7 @@ gulp.task('bundle-js', function () {
         libraryTarget: 'var',
       },
     }))
+    .pipe(babel({presets: ['es2015']}))
     .pipe(gulp.dest(PATHS.JS.DEST));
 });
 
