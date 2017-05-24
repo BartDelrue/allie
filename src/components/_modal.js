@@ -74,6 +74,7 @@ let modal = (() => {
     });
 
     modalTrigger.focus();
+
   };
 
   modalTriggers.forEach(modal => {
