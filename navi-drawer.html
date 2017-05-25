@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Allie userguide - navigation drawer</title>
   <link rel="stylesheet" href="allie.css">
   <!--<link rel="stylesheet" href="validate.css">-->
@@ -52,6 +53,7 @@
     <li><a href="general.html">General</a></li>
     <li><a href="modal.html">Modal</a></li>
     <li><a href="#main" aria-describedby="current">Navigation drawer</a></li>
+    <li><a href="tabs.html">Tabs</a></li>
   </ul>
 
 </nav>
@@ -65,6 +67,8 @@
       <li><a href="general.html">General</a></li>
       <li><a href="modal.html">Modal</a></li>
       <li><a href="#main" aria-describedby="current">Navigation drawer</a></li>
+      <li><a href="tabs.html">Tabs</a></li>
+
     </ul>
   </nav>
 
@@ -90,26 +94,32 @@
 
     <dl>
       <dt>Preferably always use accompany an icon with text</dt>
-      <dd>    <button data-navi-drawer-trigger aria-expanded="false">
-        <svg class="icon">
-          <use xlink:href="#hamburger"></use>
-        </svg>
-        <span>menu</span>
-      </button></dd>
+      <dd>
+        <button data-navi-drawer-trigger aria-expanded="false">
+          <svg class="icon">
+            <use xlink:href="#hamburger"></use>
+          </svg>
+          <span>menu</span>
+        </button>
+      </dd>
       <dt>If this is not possible, don't forget the aria-label attribute!</dt>
-      <dd>    <button data-navi-drawer-trigger aria-expanded="false" aria-label="menu">
-        <svg class="icon">
-          <use xlink:href="#hamburger"></use>
-        </svg>
-      </button></dd>
+      <dd>
+        <button data-navi-drawer-trigger aria-expanded="false" aria-label="menu" title="menu">
+          <svg class="icon">
+            <use xlink:href="#hamburger"></use>
+          </svg>
+        </button>
+      </dd>
     </dl>
 
     <p>
       options available:
     </p>
-    <ul><li>allie.naviDrawer.setDuration(seconds) default = 0.5</li>
-    <li>allie.naviDrawer.isSmooth(true)</li>
-    <li>allie.naviDrawer.enableSwipe(true, threshold) default = false, 480</li></ul>
+    <ul>
+      <li>allie.naviDrawer.setDuration(seconds) default = 0.5</li>
+      <li>allie.naviDrawer.isSmooth(true)</li>
+      <li>allie.naviDrawer.enableSwipe(true, threshold) default = false, 480</li>
+    </ul>
     <p>Elements specifiek to the modal component receive a clear red border on focus. <br>
       This is for demonstration purposes.</p>
 

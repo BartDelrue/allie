@@ -3,12 +3,11 @@ module.exports = (() => {
 
   let components = document.querySelectorAll('[data-tabs]');
 
-  let changeTab = (tab, tabs, tabpanels, component) => {
+  let changeTab = (tab, tabs, tabpanels, component, init) => {
 
-    for (let i = tabs.length; i > 0; i--)
-    {
+    for (let i = tabs.length; i > 0; i--) {
       tabs[i - 1].setAttribute('aria-selected', false);
-      tabs[i-1].tabIndex = -1;
+      tabs[i - 1].tabIndex = -1;
     }
 
     tab.setAttribute('aria-selected', true);
@@ -20,10 +19,11 @@ module.exports = (() => {
     let tabpanel = component.querySelector(tab.hash);
     if (tabpanel) {
       tabpanel.setAttribute('aria-hidden', false);
-      window.location.hash = tab.hash;
-      tab.focus();
+      if (!init) {
+        window.location.hash = tab.hash;
+        tab.focus();
+      }
     }
-
   };
 
   let handleKeyboardInput = (e, tabs) => {
@@ -109,14 +109,12 @@ module.exports = (() => {
 
     let hash = window.location.hash;
 
-    let tablist = component.querySelector('ul[data-tablist]');
-    let tabs = tablist.querySelectorAll('li[role=presentation]>a[data-tab]');
-    let tabpanels = component.querySelectorAll('[data-tabpanel]');
+    let tablist = component.querySelector('ul[role=tablist]');
+    let tabs = tablist.querySelectorAll('li[role=presentation]>a[role=tab]');
+    let tabpanels = component.querySelectorAll('[role=tabpanel]');
 
-    tablist.setAttribute('role', 'tablist');
 
     for (let i = tabs.length; i > 0; i--) {
-      tabs[i - 1].setAttribute('role', 'tab');
       tabs[i - 1].setAttribute('aria-selected', false);
       tabs[i - 1].setAttribute('aria-controls', tabs[i - 1].hash.substr(1));
       tabs[i - 1].addEventListener('click', function (e) {
@@ -129,18 +127,21 @@ module.exports = (() => {
     }
 
     for (let i = tabpanels.length; i > 0; i--) {
-      tabpanels[i - 1].setAttribute('role', 'tabpanel');
       tabpanels[i - 1].setAttribute('aria-hidden', true);
     }
 
 
     if (hash) {
       let tab = tablist.querySelector('[href="' + hash + '"]');
+
       if (tab)
         tab.click();
+      else
+        changeTab(tabs[0], tabs, tabpanels, component, true);
     }
     else {
-      tabs[0].click();
+
+      changeTab(tabs[0], tabs, tabpanels, component, true);
     }
   };
 

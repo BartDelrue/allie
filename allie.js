@@ -386,7 +386,7 @@ var allie =
 
 		var components = document.querySelectorAll('[data-tabs]');
 
-		var changeTab = function changeTab(tab, tabs, tabpanels, component) {
+		var changeTab = function changeTab(tab, tabs, tabpanels, component, init) {
 
 			for (var i = tabs.length; i > 0; i--) {
 				tabs[i - 1].setAttribute('aria-selected', false);
@@ -401,8 +401,10 @@ var allie =
 			}var tabpanel = component.querySelector(tab.hash);
 			if (tabpanel) {
 				tabpanel.setAttribute('aria-hidden', false);
-				window.location.hash = tab.hash;
-				tab.focus();
+				if (!init) {
+					window.location.hash = tab.hash;
+					tab.focus();
+				}
 			}
 		};
 
@@ -487,14 +489,11 @@ var allie =
 
 			var hash = window.location.hash;
 
-			var tablist = component.querySelector('ul[data-tablist]');
-			var tabs = tablist.querySelectorAll('li[role=presentation]>a[data-tab]');
-			var tabpanels = component.querySelectorAll('[data-tabpanel]');
-
-			tablist.setAttribute('role', 'tablist');
+			var tablist = component.querySelector('ul[role=tablist]');
+			var tabs = tablist.querySelectorAll('li[role=presentation]>a[role=tab]');
+			var tabpanels = component.querySelectorAll('[role=tabpanel]');
 
 			for (var i = tabs.length; i > 0; i--) {
-				tabs[i - 1].setAttribute('role', 'tab');
 				tabs[i - 1].setAttribute('aria-selected', false);
 				tabs[i - 1].setAttribute('aria-controls', tabs[i - 1].hash.substr(1));
 				tabs[i - 1].addEventListener('click', function (e) {
@@ -507,15 +506,16 @@ var allie =
 			}
 
 			for (var _i4 = tabpanels.length; _i4 > 0; _i4--) {
-				tabpanels[_i4 - 1].setAttribute('role', 'tabpanel');
 				tabpanels[_i4 - 1].setAttribute('aria-hidden', true);
 			}
 
 			if (hash) {
 				var tab = tablist.querySelector('[href="' + hash + '"]');
-				if (tab) tab.click();
+
+				if (tab) tab.click();else changeTab(tabs[0], tabs, tabpanels, component, true);
 			} else {
-				tabs[0].click();
+
+				changeTab(tabs[0], tabs, tabpanels, component, true);
 			}
 		};
 

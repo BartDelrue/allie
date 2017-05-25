@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Allie userguide - tabs</title>
   <link rel="stylesheet" href="allie.css">
-  <!--<link rel="stylesheet" href="validate.css">-->
+  <link rel="stylesheet" href="validate.css">
 
   <style>
     html {
@@ -14,6 +15,9 @@
 
     ul {
       list-style: none;
+    }
+    li:not([role='presentation']){
+      padding-bottom: .5rem;
     }
 
     h1 {
@@ -63,48 +67,202 @@
   <h1>Tabs</h1>
 
   <div class="tabs" data-tabs>
-  <ul data-tablist >
-    <li role="presentation"><a data-tab href="#requirements">requirements</a></li>
-    <li role="presentation"><a data-tab href="#example">example</a></li>
-    <li role="presentation"><a data-tab href="#tab2">tab</a></li>
-    <li role="presentation"><a data-tab href="#tab3">tab</a></li>
-  </ul>
-  <article data-tabpanel  class="tabpanel" id="requirements">
-    <h2 >requirements</h2>
-    <ul>
-      <li>Keyboard trap for tab and shift-tab</li>
-      <li>Enable escape to close</li>
-      <li>Change focus upon opening</li>
-      <li>Place focus back to the trigger after closing</li>
-      <li>Set other content as aria-hidden=true while open</li>
-      <li>Can be triggered by a button or by swiping from the left</li>
-      <li>The button must communicate the state of the menu</li>
-      <li>The button must have a label</li>
+    <ul role="tablist" >
+      <li role="presentation"><a role="tab" href="#requirements">requirements</a></li>
+      <li role="presentation"><a role="tab" href="#tab2">some tab</a></li>
+      <li role="presentation"><a role="tab" href="#tab3">some tab</a></li>
+      <li role="presentation"><a role="tab" href="#tab4">some tab</a></li>
     </ul>
-  </article>
-  <article data-tabpanel class="tabpanel" id="example">
-    <h2>example</h2>
+    <article role="tabpanel" class="tabpanel" id="requirements">
+      <h2 >requirements</h2>
+      <ul>
+        <li>The tabbed interface component contains tabs and their associated content panels.</li>
+        <li>The content panel uses the role tabpanel.</li>
+        <li>An element with role tab is used as a grouping label, providing a link for selecting the tabpanel to be
+          rendered to the user.
+        </li>
+        <li>Assign the aria-controls relationship of a tab to the ID of its tabpanel.</li>
+        <li>Authors manage the selected state of each tab by maintaining its aria-selected state.</li>
+        <li>A tablist is the container role for a set of elements with the role attribute set to tab.</li>
+        <li>Tab - only the active tab is in the tab order. The user reaches the tabbed panel component by pressing the
+          tab key until the active tab title receives focus.
+        </li>
+        <li>Left Arrow - with focus on a tab, pressing the left arrow will move focus to the previous tab in the tab
+          list and activate that tab. Pressing the left arrow when the focus is on the first tab in the tab list will
+          move focus and activate the last tab in the list.
+        </li>
+        <li>Right Arrow - with focus on a tab, pressing the right arrow will move focus to the next tab in the tab list
+          and activate that tab. Pressing the right arrow when the focus is on the last tab in the tab list will move
+          focus to and activate the first tab in the list.
+        </li>
+        <li>Up arrow - behaves the same as left arrow in order to support vertical tabs</li>
+        <li>Down arrow - behaves the same as right arrow in order to support vertical tabs</li>
+        <li>Home - with focus on a tab, moves the focus to the first tab.</li>
+        <li>End - with focus on a tab, moves the focus to the last tab.</li>
+      </ul>
+    </article>
+    <article  role="tabpanel" class="tabpanel" id="tab2">
+      <h2>tab 2</h2>
 
 
-    <p>
-      options available:
-    </p>
-    <ul><li>allie.naviDrawer.setDuration(seconds) default = 0.5</li>
-    <li>allie.naviDrawer.isSmooth(true)</li>
-    <li>allie.naviDrawer.enableSwipe(true, threshold) default = false, 480</li></ul>
-    <p>Elements specifiek to the modal component receive a clear red border on focus. <br>
-      This is for demonstration purposes.</p>
+    </article>
 
-  </article>
+    <article role="tabpanel" class="tabpanel" id="tab3">
+      <h2>tab 3</h2>
+    </article>
+    <article role="tabpanel" class="tabpanel" id="tab4">
+      <h2>tab 4</h2>
+    </article>
+  </div>
+
+
+  <h2>Javascript disabled</h2>
+
+  <p>In case javascript is disabled, the tabs will remain their functionality as same page links:</p>
+
+
+  <div class="tabs">
+    <ul role="tablist" >
+      <li role="presentation"><a role="tab" data-tab href="#_tab0">tab 1</a></li>
+      <li role="presentation"><a role="tab" data-tab href="#_tab1">tab 2</a></li>
+      <li role="presentation"><a role="tab" data-tab href="#_tab2">tab 3</a></li>
+      <li role="presentation"><a role="tab" data-tab href="#_tab3">tab 4</a></li>
+    </ul>
+    <article role="tabpanel" class="tabpanel" id="_tab0">
+      <h3>tab 1</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias asperiores deleniti, dolor eius eligendi
+        laborum nihil non, praesentium quasi quia temporibus totam veritatis! Atque excepturi id, iusto labore sint
+        soluta sunt suscipit. Accusamus, aut ea earum est porro sed velit. Accusamus ad aspernatur at aut consectetur
+        dicta dolor eius eos excepturi fugit, hic impedit itaque iusto labore laborum laudantium maxime modi nisi porro
+        praesentium quibusdam ratione repellat sed sequi suscipit. Ad alias aperiam blanditiis cumque, cupiditate
+        dolorum eligendi excepturi exercitationem fugiat ipsa libero magnam nisi nobis numquam odio optio quaerat quam
+        quasi qui quia repellat sequi sint ullam veniam voluptate.</p>
+      <p>Aliquid aperiam commodi, labore neque reiciendis totam unde. Ad alias, beatae culpa debitis deleniti et eum
+        eveniet ex illo incidunt inventore itaque labore laudantium nam nemo nesciunt nihil odio officia porro possimus,
+        quas quia quibusdam quos ratione sed temporibus vitae voluptates. Ad et, numquam? Alias consectetur, cupiditate
+        dignissimos maiores minus odio officia sequi vitae? Amet fugiat, inventore laudantium minus officiis quo.
+        Accusantium, aliquam asperiores culpa cupiditate doloremque ea, enim est exercitationem, necessitatibus nulla
+        qui repellat reprehenderit voluptas. Aut corporis delectus dicta dolore dolores dolorum ea eligendi in ipsum
+        iusto neque nisi, nostrum officia pariatur perferendis placeat tempore ullam ut voluptatem.</p>
+      <p>A, aperiam at dolores earum, expedita fugit iusto molestiae nam nisi nostrum officia optio quae quas quidem
+        recusandae reiciendis repellat repellendus soluta veniam, vitae voluptas voluptate voluptates. Beatae blanditiis
+        earum enim est eveniet exercitationem facilis illum inventore ipsa ipsum maxime nam omnis placeat provident
+        quae, quo rem saepe sequi sit tempora ut velit vitae voluptatum. Consectetur cum, dolore dolores, enim esse est
+        fugiat hic labore laudantium minus nobis perspiciatis repudiandae, sapiente. Ab id officiis provident rem
+        reprehenderit? Atque cumque, distinctio ipsum molestiae obcaecati repudiandae veritatis voluptatibus. Dolores
+        esse, et in iusto non porro quae quasi quos sed. At, cumque, nobis!</p>
+      <p>Adipisci alias amet animi commodi consectetur consequatur cum distinctio dolorum eius esse explicabo facere id
+        in ipsa ipsam iure iusto labore laboriosam magnam magni maiores modi natus necessitatibus, nobis, possimus
+        praesentium quas repellendus saepe sequi sit ullam velit vero voluptatem! Aliquam animi aperiam, atque corporis
+        culpa cumque deserunt dolore dolorem dolores dolorum ea eos eum eveniet excepturi expedita facilis hic impedit
+        ipsa labore magnam necessitatibus nisi non obcaecati officia perferendis perspiciatis possimus quas quibusdam
+        recusandae repellendus, sapiente sint suscipit, tempora ullam veniam veritatis vitae? Ab accusamus, aliquam
+        cupiditate dolorum, error labore, laboriosam maiores quasi quod rem sequi ut velit voluptates.</p>
+    </article>
+    <article  role="tabpanel" class="tabpanel" id="_tab1">
+      <h3>tab 2</h3>
+
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet corporis cupiditate dicta fuga odio. Amet
+        assumenda, corporis cum dignissimos eos, fuga id ipsam maiores minima possimus, quasi quos ratione reprehenderit
+        sapiente tenetur. Aperiam ex pariatur placeat sed. Adipisci aliquid animi commodi consequatur, consequuntur
+        corporis debitis delectus deserunt dolorum eaque fugit, hic impedit ipsa labore maxime nesciunt nobis non nulla
+        officiis optio, quis rem repellendus sapiente? A cum eaque eos expedita illum impedit ipsam labore magnam nemo
+        neque nesciunt, nobis non odio quam recusandae. Ad assumenda deleniti excepturi expedita ipsum magnam modi quas.
+        Assumenda ea ex iure maiores nam necessitatibus omnis.</p>
+      <p>Commodi consequatur cumque delectus magnam magni saepe tempore totam. Animi consequuntur dignissimos ea facere
+        impedit in maiores molestiae qui sequi, velit? Adipisci architecto dicta minima nesciunt nisi non perspiciatis
+        veritatis. Amet cupiditate debitis dignissimos exercitationem fugit illum iure labore libero neque nostrum,
+        officiis perferendis quaerat quas quibusdam repellat sequi, tempore temporibus ullam vitae voluptas. Aut
+        consequuntur deserunt, id impedit in ipsa, molestias natus officia placeat quae quas ut voluptas voluptatem.
+        Accusamus ad aliquam deserunt distinctio dolore dolorem doloremque ducimus esse excepturi id inventore labore
+        laboriosam libero mollitia nam nisi non, odit officia perferendis, perspiciatis quia quidem repellendus sed
+        tempora, voluptatem?</p>
+      <p>Accusantium ad aliquid, amet aperiam aspernatur assumenda at autem dolores ea eius et eveniet expedita facere
+        fuga illo illum ipsam iusto, modi necessitatibus officiis pariatur perspiciatis quae quas quis rem saepe soluta,
+        sunt unde veritatis voluptatem. Eius esse molestiae temporibus. Id ipsa itaque nihil odio veniam voluptates!
+        Blanditiis hic officiis omnis provident temporibus tenetur voluptatem! Aliquid, atque dicta distinctio eaque eos
+        error ex iste libero modi molestias officiis quis, sed, suscipit tempore totam voluptas voluptatem! Adipisci,
+        alias amet commodi eos exercitationem hic incidunt ipsum officia, placeat sapiente sed sequi voluptatibus!
+        Delectus enim eos fuga obcaecati, odio pariatur quisquam sit tempora.</p>
+      <p>Accusantium aliquid, deserunt earum eligendi fuga illo labore natus repellat sint voluptates! Ducimus eum
+        explicabo facere laboriosam, magnam minima ratione. Aliquam debitis deserunt dolores eligendi harum maxime nobis
+        possimus vitae! Ad alias aliquid cumque facere harum illo minus odio qui quibusdam temporibus! Aliquam
+        architecto deleniti eum illo itaque maxime nostrum officia. A accusantium assumenda, deleniti ea et fugit hic
+        illo in incidunt inventore nam pariatur perferendis repudiandae similique tempore ullam vitae. Adipisci alias
+        consequatur ducimus est et eum ex illo illum, inventore ipsam ipsum, laborum modi nam non odit, officia optio
+        pariatur praesentium quae quaerat quidem soluta voluptates? Cum, veniam!</p>
+
+    </article>
+
+    <article role="tabpanel" class="tabpanel" id="_tab2">
+      <h3>tab 3</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, culpa cum fuga hic inventore iste iure
+        iusto minima necessitatibus quas repellendus rerum unde? Alias ea, eum exercitationem unde velit voluptate!
+        Aliquam blanditiis consequatur, corporis culpa dolor eius eligendi explicabo impedit ipsam natus nobis non
+        placeat porro praesentium quis ratione totam velit voluptate? Accusamus ad animi aperiam architecto at cumque
+        cupiditate delectus distinctio dolor eaque eligendi et fuga itaque iusto minus molestias natus, nulla numquam
+        optio pariatur placeat quae quaerat quasi qui quisquam quod reiciendis, repellendus sit tempore totam. Beatae
+        delectus deleniti dolor eum facere laudantium natus nobis quisquam recusandae sint.</p>
+      <p>Cumque cupiditate facere officiis repellendus sequi sunt. Aperiam architecto consequatur dolorum ducimus
+        eligendi inventore minus mollitia, numquam officiis perferendis porro possimus quam quis quo rem repudiandae
+        similique suscipit tempora ullam velit. A blanditiis commodi, hic iure modi pariatur! Amet cum dolorem dolorum
+        fugit in minima omnis quaerat repellat reprehenderit saepe. Amet aspernatur blanditiis corporis dolor error, ex
+        excepturi fugit hic illo incidunt ipsam maiores minima nesciunt nisi nulla officia, optio perferendis placeat
+        quo rem reprehenderit sit ullam? Earum facere praesentium ratione. Adipisci dolores facilis repellat. Ab amet
+        dolores eveniet iure magni modi mollitia obcaecati praesentium quae vitae. Aut, cum esse!</p>
+      <p>Debitis dicta distinctio eligendi impedit perferendis possimus quam qui quia rem vero. Aliquid, asperiores
+        consequuntur, cum distinctio dolor doloribus ducimus earum eveniet facere iure magnam magni non nostrum odio
+        odit quos recusandae rem repellendus saepe, ullam. Architecto aspernatur cumque, itaque minima nesciunt officiis
+        voluptatum? Asperiores assumenda cumque delectus dolore doloremque eius labore libero magnam molestias, numquam
+        odit, officiis perferendis quibusdam quod quos recusandae rem vel? Ab accusamus aliquid architecto deleniti
+        dolore doloribus eaque enim eos eum eveniet, excepturi expedita harum id impedit inventore itaque maxime porro
+        quam quia quo ratione repellendus repudiandae saepe sit, soluta veniam veritatis voluptatum! Doloribus,
+        vitae.</p>
+      <p>Ad animi consectetur corporis doloribus excepturi illum ipsam iure laboriosam nam, nihil nulla quo quos
+        reiciendis soluta vel. Atque, autem beatae blanditiis cumque dolore eos ex harum iure minus modi non nulla
+        obcaecati odio porro reiciendis reprehenderit similique sunt suscipit vel veniam vero, voluptas voluptatibus.
+        Accusantium, blanditiis cumque deserunt earum eveniet ex explicabo fugit id neque qui, quisquam reprehenderit,
+        suscipit? Laborum nemo provident quae quisquam. Deserunt illo molestiae omnis voluptas! Ad aperiam asperiores
+        assumenda autem, beatae commodi delectus dignissimos dolorum ea earum error et iste laboriosam nihil nisi
+        nostrum omnis, placeat praesentium quo recusandae reprehenderit repudiandae tenetur voluptas. Earum, porro?</p>
+    </article>
+    <article role="tabpanel" class="tabpanel" id="_tab3">
+      <h3>tab 4</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid architecto cupiditate dolorum, est expedita
+        explicabo facilis, impedit ipsum mollitia nostrum omnis placeat quo rerum sed sit veniam vitae! A ab animi
+        asperiores, assumenda, consequatur dolorum esse eum fugit inventore ipsa itaque magni modi nemo numquam odio
+        optio perspiciatis porro possimus provident quo reiciendis rem sapiente sint soluta sunt voluptas voluptatibus?
+        Alias assumenda aut commodi cupiditate eaque expedita in ipsa quia, saepe soluta. Aspernatur assumenda, atque
+        aut beatae consequuntur corporis, et, harum itaque nesciunt nihil odit quae quia temporibus veniam vero.
+        Aperiam, consequuntur eos fuga necessitatibus quia rem sapiente tenetur veritatis.</p>
+      <p>Accusamus animi aperiam culpa debitis, dolorem excepturi id illum ipsum laboriosam laborum nam nihil, nobis
+        nostrum obcaecati officiis optio perspiciatis quisquam repellendus repudiandae saepe tempore temporibus totam.
+        Adipisci alias aliquid, aspernatur aut consectetur consequuntur culpa dolorem ea, earum eos est excepturi
+        expedita facilis fugit ipsam iste laborum nemo nesciunt odit optio provident qui quisquam recusandae rerum sed
+        suscipit, tempore temporibus totam ut voluptates? Aliquam amet assumenda consequatur cum dignissimos dolorum
+        esse iste iusto minima numquam quia quisquam suscipit, ullam velit vero! Dolor doloribus incidunt minus officia
+        optio, sequi! Doloribus id incidunt nesciunt non quaerat suscipit tenetur unde vel, veniam voluptatibus?</p>
+      <p>At dolorum enim est fugit impedit iusto labore libero maxime molestias, optio quaerat quia quod, repellat
+        repudiandae sequi totam vero. Aliquid atque autem, consequuntur distinctio dolorum ea eaque fugit illum ipsum
+        labore necessitatibus nesciunt quo reprehenderit vel voluptate. A ad aspernatur aut consectetur corporis culpa
+        deserunt dicta distinctio, doloribus eligendi eos est eum exercitationem expedita fuga, hic illum iste libero
+        minus necessitatibus nesciunt nisi nostrum nulla odit optio pariatur praesentium quae quaerat rem reprehenderit
+        sapiente sint sit soluta tenetur, veniam voluptates voluptatibus! At autem facere fuga iste maiores placeat,
+        quibusdam? Deserunt expedita praesentium quae similique. Asperiores at atque commodi consequatur!</p>
+      <p>Aliquam aperiam autem, consectetur cum doloremque, ducimus fugiat harum inventore libero magnam modi mollitia
+        officiis, omnis possimus quae reprehenderit similique tempora veritatis! Aliquid autem culpa cum delectus
+        deleniti dolore earum, eius enim error esse expedita facere id iusto libero magni maxime mollitia neque nisi
+        numquam placeat quas ratione rem, sapiente sint soluta tempora tempore voluptatibus. Alias aspernatur at aut
+        consequuntur corporis cum cumque debitis delectus dicta doloribus ducimus et fuga fugiat hic illum iusto labore
+        libero magni maxime modi nam nemo nihil odio optio quidem quis quod ratione repellendus reprehenderit soluta
+        totam vel veritatis, voluptatum. Dicta hic quos tenetur. Temporibus?</p>
+    </article>
   </div>
 
 </main>
 <div hidden id="current">Current page</div>
 <div hidden id="foreign">Foreign page</div>
 <div hidden id="same">Same page</div>
-
-
-
 
 <script src="allie.js"></script>
 
