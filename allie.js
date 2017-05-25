@@ -159,26 +159,28 @@ var allie =
 /* 3 */
 /***/function (module, exports) {
 
-	var naviDrawer = function () {
+	module.exports = function () {
 		'use strict';
 
 		var overlay = document.querySelector('[data-navi-drawer-overlay]');
 		var triggers = document.querySelectorAll('input[type=button][data-navi-drawer-trigger], button[data-navi-drawer-trigger]');
 		var closeBtns = document.querySelectorAll('[data-navi-drawer-close]');
 		var drawer = document.querySelector('nav[data-navi-drawer]');
+		var bodyChildren = document.querySelectorAll('body > *:not([data-navi-drawer])');
+
 		var trigger = void 0,
-		    focusableElems = void 0;
+		    focusableElems = void 0,
+		    width = void 0,
+		    closeNavi = void 0,
+		    openNavi = void 0;
+
 		var startPos = 0;
 		var focusPosition = -1;
-		var bodyChildren = document.querySelectorAll('body > *:not([data-navi-drawer])');
 
 		var smooth = true;
 		var duration = 0.75;
 		var threshold = 480;
 		var swipeEnabled = true;
-		var width = void 0,
-		    closeNavi = void 0,
-		    openNavi = void 0;
 
 		var setDuration = function setDuration(d) {
 			duration = d;
@@ -351,8 +353,8 @@ var allie =
 			threshold = width ? width : threshold;
 
 			if (enable && drawer) {
-				document.addEventListener('touchstart', function (e) {
 
+				document.addEventListener('touchstart', function (e) {
 					if (!swipeEnabled || window.innerWidth > threshold) return;
 					var pos = e.changedTouches[0].pageX;
 
@@ -374,15 +376,153 @@ var allie =
 		};
 	}();
 
-	module.exports = naviDrawer;
-
 	/***/
 },
 /* 4 */
 /***/function (module, exports) {
 
-	/**
-  * Created by Bart on 20/05/2017.
-  */
+	module.exports = function () {
+		'use strict';
 
-	/***/}]);
+		var components = document.querySelectorAll('[data-tabs]');
+
+		var changeTab = function changeTab(tab, tabs, tabpanels, component) {
+
+			for (var i = tabs.length; i > 0; i--) {
+				tabs[i - 1].setAttribute('aria-selected', false);
+				tabs[i - 1].tabIndex = -1;
+			}
+
+			tab.setAttribute('aria-selected', true);
+			tab.tabIndex = 0;
+
+			for (var _i3 = tabpanels.length; _i3 > 0; _i3--) {
+				tabpanels[_i3 - 1].setAttribute('aria-hidden', true);
+			}var tabpanel = component.querySelector(tab.hash);
+			if (tabpanel) {
+				tabpanel.setAttribute('aria-hidden', false);
+				window.location.hash = tab.hash;
+				tab.focus();
+			}
+		};
+
+		var handleKeyboardInput = function handleKeyboardInput(e, tabs) {
+
+			var keyCode = e.keyCode || e.which;
+			var tab = e.target;
+
+			var next = function next() {
+				for (var i = tabs.length; i > 0; i--) {
+					if (tabs[i - 1] === tab) {
+						e.preventDefault();
+						var _tab = tabs[i] ? tabs[i] : tabs[0];
+						_tab.focus();
+						_tab.click();
+					}
+				}
+			};
+
+			var previous = function previous() {
+				for (var i = tabs.length; i > 0; i--) {
+					if (tabs[i - 1] === tab) {
+						var _tab2 = tabs[i - 2] ? tabs[i - 2] : tabs[tabs.length - 1];
+						e.preventDefault();
+						_tab2.focus();
+						_tab2.click();
+					}
+				}
+			};
+
+			var end = function end() {
+
+				e.preventDefault();
+				tabs[tabs.length - 1].focus();
+				tabs[tabs.length - 1].click();
+			};
+
+			var home = function home() {
+
+				e.preventDefault();
+				tabs[0].focus();
+				tabs[0].click();
+			};
+
+			var setfocus = function setfocus() {
+				var tabpanel = document.querySelector(tab.hash);
+				if (tabpanel && !e.shiftKey) {
+					e.preventDefault();
+					window.location.hash = tab.hash;
+				}
+			};
+
+			switch (keyCode) {
+				case 37:
+					previous();
+					break;
+				case 38:
+					previous();
+					break;
+				case 40:
+					next();
+					break;
+				case 39:
+					next();
+					break;
+				case 36:
+					home();
+					break;
+				case 35:
+					end();
+					break;
+				case 9:
+					setfocus();
+					break;
+				case 13:
+					setfocus();
+					break;
+			}
+		};
+
+		var initTabs = function initTabs(component) {
+
+			var hash = window.location.hash;
+
+			var tablist = component.querySelector('ul[data-tablist]');
+			var tabs = tablist.querySelectorAll('li[role=presentation]>a[data-tab]');
+			var tabpanels = component.querySelectorAll('[data-tabpanel]');
+
+			tablist.setAttribute('role', 'tablist');
+
+			for (var i = tabs.length; i > 0; i--) {
+				tabs[i - 1].setAttribute('role', 'tab');
+				tabs[i - 1].setAttribute('aria-selected', false);
+				tabs[i - 1].setAttribute('aria-controls', tabs[i - 1].hash.substr(1));
+				tabs[i - 1].addEventListener('click', function (e) {
+					e.preventDefault();
+					changeTab(e.target, tabs, tabpanels, component);
+				});
+				tabs[i - 1].addEventListener('keydown', function (e) {
+					handleKeyboardInput(e, tabs);
+				});
+			}
+
+			for (var _i4 = tabpanels.length; _i4 > 0; _i4--) {
+				tabpanels[_i4 - 1].setAttribute('role', 'tabpanel');
+				tabpanels[_i4 - 1].setAttribute('aria-hidden', true);
+			}
+
+			if (hash) {
+				var tab = tablist.querySelector('[href="' + hash + '"]');
+				if (tab) tab.click();
+			} else {
+				tabs[0].click();
+			}
+		};
+
+		for (var i = components.length; i > 0; i--) {
+			initTabs(components[i - 1]);
+		}
+	}();
+
+	/***/
+}]);

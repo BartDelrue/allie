@@ -1,20 +1,21 @@
-let naviDrawer = (() => {
+module.exports = (() => {
   'use strict';
 
   let overlay = document.querySelector('[data-navi-drawer-overlay]');
   let triggers = document.querySelectorAll('input[type=button][data-navi-drawer-trigger], button[data-navi-drawer-trigger]');
   let closeBtns = document.querySelectorAll('[data-navi-drawer-close]');
   let drawer = document.querySelector('nav[data-navi-drawer]');
-  let trigger, focusableElems;
+  let bodyChildren = document.querySelectorAll('body > *:not([data-navi-drawer])');
+
+  let trigger, focusableElems, width, closeNavi, openNavi;
+
   let startPos = 0;
   let focusPosition = -1;
-  let bodyChildren = document.querySelectorAll('body > *:not([data-navi-drawer])');
 
   let smooth = true;
   let duration = 0.75;
   let threshold = 480;
   let swipeEnabled = true;
-  let width, closeNavi, openNavi;
 
 
   let setDuration = (d) => {
@@ -189,7 +190,7 @@ let naviDrawer = (() => {
     if (pos > 80 || pos >= width) {
       startPos = 80;
       document.removeEventListener('touchmove', swipeDrawer);
-      openDrawer()
+      openDrawer();
     }
   };
 
@@ -206,8 +207,8 @@ let naviDrawer = (() => {
     threshold = width ? width : threshold;
 
     if (enable && drawer) {
-      document.addEventListener('touchstart', (e) => {
 
+      document.addEventListener('touchstart', (e) => {
         if (!swipeEnabled || window.innerWidth > threshold) return;
         let pos = e.changedTouches[0].pageX;
 
@@ -231,4 +232,3 @@ let naviDrawer = (() => {
   };
 })();
 
-module.exports = naviDrawer;

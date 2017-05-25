@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Allie userguide - navigation drawer</title>
+  <title>Allie userguide - tabs</title>
   <link rel="stylesheet" href="allie.css">
   <!--<link rel="stylesheet" href="validate.css">-->
 
@@ -34,7 +34,7 @@
       margin-bottom: 1.5rem;
     }
 
-    .navi-drawer:focus, *:focus {
+    *:focus {
       border: 2px solid red !important;
     }
 
@@ -44,19 +44,6 @@
 <body>
 <a href="#main" class="a--skiplink">skip to main</a>
 
-<nav class="navi-drawer" data-navi-drawer hidden>
-  <button data-navi-drawer-close>close</button>
-
-  <ul class="navi-drawer__links-list">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="general.html">General</a></li>
-    <li><a href="modal.html">Modal</a></li>
-    <li><a href="#main" aria-describedby="current">Navigation drawer</a></li>
-  </ul>
-
-</nav>
-
-<div class="navi-drawer-overlay" data-navi-drawer-overlay hidden></div>
 <header role="banner">
 
   <nav>
@@ -64,7 +51,8 @@
       <li><a href="index.html">Home</a></li>
       <li><a href="general.html">General</a></li>
       <li><a href="modal.html">Modal</a></li>
-      <li><a href="#main" aria-describedby="current">Navigation drawer</a></li>
+      <li><a href="navi-drawer.html">Navigation drawer</a></li>
+      <li><a href="#main" aria-describedby="current">Tabs</a></li>
     </ul>
   </nav>
 
@@ -72,10 +60,17 @@
 
 
 <main id="main">
-  <h1>Navigation drawer</h1>
+  <h1>Tabs</h1>
 
-  <article id="modal">
-    <h2>requirements</h2>
+  <div class="tabs" data-tabs>
+  <ul data-tablist >
+    <li role="presentation"><a data-tab href="#requirements">requirements</a></li>
+    <li role="presentation"><a data-tab href="#example">example</a></li>
+    <li role="presentation"><a data-tab href="#tab2">tab</a></li>
+    <li role="presentation"><a data-tab href="#tab3">tab</a></li>
+  </ul>
+  <article data-tabpanel  class="tabpanel" id="requirements">
+    <h2 >requirements</h2>
     <ul>
       <li>Keyboard trap for tab and shift-tab</li>
       <li>Enable escape to close</li>
@@ -86,23 +81,10 @@
       <li>The button must communicate the state of the menu</li>
       <li>The button must have a label</li>
     </ul>
+  </article>
+  <article data-tabpanel class="tabpanel" id="example">
     <h2>example</h2>
 
-    <dl>
-      <dt>Preferably always use accompany an icon with text</dt>
-      <dd>    <button data-navi-drawer-trigger aria-expanded="false">
-        <svg class="icon">
-          <use xlink:href="#hamburger"></use>
-        </svg>
-        <span>menu</span>
-      </button></dd>
-      <dt>If this is not possible, don't forget the aria-label attribute!</dt>
-      <dd>    <button data-navi-drawer-trigger aria-expanded="false" aria-label="menu">
-        <svg class="icon">
-          <use xlink:href="#hamburger"></use>
-        </svg>
-      </button></dd>
-    </dl>
 
     <p>
       options available:
@@ -114,7 +96,7 @@
       This is for demonstration purposes.</p>
 
   </article>
-
+  </div>
 
 </main>
 <div hidden id="current">Current page</div>
@@ -122,18 +104,9 @@
 <div hidden id="same">Same page</div>
 
 
-<svg style="display: none" hidden>
-  <symbol id="hamburger" viewBox="0 0 32 32">
-    <path
-      d="M4,10h24c1.104,0,2-0.896,2-2s-0.896-2-2-2H4C2.896,6,2,6.896,2,8S2.896,10,4,10z M28,14H4c-1.104,0-2,0.896-2,2  s0.896,2,2,2h24c1.104,0,2-0.896,2-2S29.104,14,28,14z M28,22H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h24c1.104,0,2-0.896,2-2  S29.104,22,28,22z"></path>
-  </symbol>
-</svg>
+
 
 <script src="allie.js"></script>
-<script>
-  allie.naviDrawer.setDuration(1);
-  allie.naviDrawer.isSmooth(true);
-  allie.naviDrawer.enableSwipe(true, 500);
-</script>
+
 </body>
 </html>

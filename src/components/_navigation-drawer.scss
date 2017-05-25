@@ -1,4 +1,4 @@
-.navi-drawer {
+body>nav.navi-drawer {
   @include box-shadow(2px);
   background: $white;
   height: 100vh;
@@ -15,13 +15,13 @@
   }
 }
 
-.navi-drawer--visible {
+body>nav.navi-drawer--visible {
   left: 0;
   right: auto;
   z-index: 999;
 }
 
-.navi-drawer-overlay {
+body>.navi-drawer-overlay {
   background-color: transparentize($black, .2);
   height: 100vh;
   left: 0;
