@@ -401,10 +401,9 @@ var allie =
 			}var tabpanel = component.querySelector(tab.hash);
 			if (tabpanel) {
 				tabpanel.setAttribute('aria-hidden', false);
-				if (!init) {
-					window.location.hash = tab.hash;
-					tab.focus();
-				}
+
+				if (history.pushState) history.pushState(null, null, tab.hash);else window.location.hash = tab.hash;
+				tab.focus();
 			}
 		};
 
@@ -453,7 +452,7 @@ var allie =
 				var tabpanel = document.querySelector(tab.hash);
 				if (tabpanel && !e.shiftKey) {
 					e.preventDefault();
-					window.location.hash = tab.hash;
+					if (history.pushState) history.pushState(null, null, tab.hash);else window.location.hash = tab.hash;
 				}
 			};
 
@@ -514,7 +513,6 @@ var allie =
 
 				if (tab) tab.click();else changeTab(tabs[0], tabs, tabpanels, component, true);
 			} else {
-
 				changeTab(tabs[0], tabs, tabpanels, component, true);
 			}
 		};

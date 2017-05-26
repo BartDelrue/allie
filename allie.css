@@ -102,9 +102,39 @@ body > .modal[role='dialog'][aria-labelledby][data-modal] {
   top: 10vh;
   width: calc(100% - 20vw);
   z-index: 999; }
-  body > .modal[role='dialog'][aria-labelledby][data-modal] .modal__close-btn[data-modal-close] {
+  body > .modal[role='dialog'][aria-labelledby][data-modal] button.modal__close-btn[data-modal-close] {
     border-radius: 1rem;
     margin: 1rem 0; }
+  body > .modal[role='dialog'][aria-labelledby][data-modal] button.modal__close-btn--top[data-modal-close]:nth-child(1) {
+    background: transparent;
+    border: 0;
+    color: transparent;
+    margin: .5em 1.5em;
+    padding: 0 1.5em;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: color .2s ease-in; }
+    body > .modal[role='dialog'][aria-labelledby][data-modal] button.modal__close-btn--top[data-modal-close]:nth-child(1):hover, body > .modal[role='dialog'][aria-labelledby][data-modal] button.modal__close-btn--top[data-modal-close]:nth-child(1):focus {
+      color: #585858; }
+    body > .modal[role='dialog'][aria-labelledby][data-modal] button.modal__close-btn--top[data-modal-close]:nth-child(1)::after {
+      background: #585858;
+      bottom: .5em;
+      content: '';
+      height: .1em;
+      position: absolute;
+      right: 0;
+      transform: rotate(45deg);
+      width: 1em; }
+    body > .modal[role='dialog'][aria-labelledby][data-modal] button.modal__close-btn--top[data-modal-close]:nth-child(1)::before {
+      background: #585858;
+      bottom: .5em;
+      content: '';
+      height: .1em;
+      position: absolute;
+      right: 0;
+      transform: rotate(-45deg);
+      width: 1em; }
 
 body > .modal-overlay[data-modal-overlay] {
   background-color: rgba(88, 88, 88, 0.8);

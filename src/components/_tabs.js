@@ -19,10 +19,13 @@ module.exports = (() => {
     let tabpanel = component.querySelector(tab.hash);
     if (tabpanel) {
       tabpanel.setAttribute('aria-hidden', false);
-      if (!init) {
-        window.location.hash = tab.hash;
+
+        if(history.pushState)
+          history.pushState(null, null, tab.hash);
+        else
+          window.location.hash = tab.hash;
         tab.focus();
-      }
+
     }
   };
 
@@ -72,7 +75,10 @@ module.exports = (() => {
       let tabpanel = document.querySelector(tab.hash);
       if (tabpanel && !e.shiftKey) {
         e.preventDefault();
-        window.location.hash = tab.hash;
+        if(history.pushState)
+          history.pushState(null, null, tab.hash);
+        else
+          window.location.hash = tab.hash;
       }
     };
 
@@ -140,7 +146,6 @@ module.exports = (() => {
         changeTab(tabs[0], tabs, tabpanels, component, true);
     }
     else {
-
       changeTab(tabs[0], tabs, tabpanels, component, true);
     }
   };
