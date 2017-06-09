@@ -35,9 +35,6 @@ module.exports = (() => {
     let keyCode = e.keyCode || e.which;
     let tab = e.target;
 
-    console.log(keyCode);
-
-
     let next = () => {
       for (let i = tabs.length; i > 0; i--) {
         if (tabs[i - 1] === tab) {
