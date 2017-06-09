@@ -21,11 +21,13 @@ module.exports = (() => {
     if (tabpanel) {
       tabpanel.setAttribute('aria-hidden', false);
 
-        if(history.pushState)
+      if (!init) {
+        if (history.pushState)
           history.pushState(null, null, tab.hash);
         else
           window.location.hash = tab.hash;
         tab.focus();
+      }
 
     }
   };
@@ -76,7 +78,7 @@ module.exports = (() => {
       let tabpanel = document.querySelector(tab.hash);
       if (tabpanel && !e.shiftKey) {
         e.preventDefault();
-        if(history.pushState)
+        if (history.pushState)
           history.pushState(null, null, tab.hash);
         else
           window.location.hash = tab.hash;

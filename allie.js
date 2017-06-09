@@ -393,8 +393,10 @@ var allie =
 			if (tabpanel) {
 				tabpanel.setAttribute('aria-hidden', false);
 
-				if (history.pushState) history.pushState(null, null, tab.hash);else window.location.hash = tab.hash;
-				tab.focus();
+				if (!init) {
+					if (history.pushState) history.pushState(null, null, tab.hash);else window.location.hash = tab.hash;
+					tab.focus();
+				}
 			}
 		};
 
@@ -402,8 +404,6 @@ var allie =
 
 			var keyCode = e.keyCode || e.which;
 			var tab = e.target;
-
-			console.log(keyCode);
 
 			var next = function next() {
 				for (var i = tabs.length; i > 0; i--) {
