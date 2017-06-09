@@ -1,6 +1,6 @@
 {
   "name": "allie",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "description": "The base for an  accessible CSS framework.",
   "main": "index.js",
   "scripts": {
