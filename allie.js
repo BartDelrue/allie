@@ -49,24 +49,15 @@ var allie =
 /* 0 */
 /***/function (module, exports, __webpack_require__) {
 
-	/**
-  * Created by Bart on 20/05/2017.
-  */
-
 	module.exports = {
-		accordion: __webpack_require__(1),
-		modal: __webpack_require__(2),
-		naviDrawer: __webpack_require__(3),
-		tabs: __webpack_require__(4)
+		modal: __webpack_require__(1),
+		naviDrawer: __webpack_require__(2),
+		tabs: __webpack_require__(3)
 	};
 
 	/***/
 },
 /* 1 */
-/***/function (module, exports) {
-
-	/***/},
-/* 2 */
 /***/function (module, exports) {
 
 	var modal = function () {
@@ -156,7 +147,7 @@ var allie =
 
 	/***/
 },
-/* 3 */
+/* 2 */
 /***/function (module, exports) {
 
 	module.exports = function () {
@@ -378,7 +369,7 @@ var allie =
 
 	/***/
 },
-/* 4 */
+/* 3 */
 /***/function (module, exports) {
 
 	module.exports = function () {
@@ -411,6 +402,8 @@ var allie =
 
 			var keyCode = e.keyCode || e.which;
 			var tab = e.target;
+
+			console.log(keyCode);
 
 			var next = function next() {
 				for (var i = tabs.length; i > 0; i--) {
@@ -474,9 +467,6 @@ var allie =
 					break;
 				case 35:
 					end();
-					break;
-				case 9:
-					setfocus();
 					break;
 				case 13:
 					setfocus();

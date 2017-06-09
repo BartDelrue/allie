@@ -1,6 +1,7 @@
 module.exports = (() => {
   'use strict';
 
+
   let components = document.querySelectorAll('[data-tabs]');
 
   let changeTab = (tab, tabs, tabpanels, component, init) => {
@@ -33,6 +34,9 @@ module.exports = (() => {
 
     let keyCode = e.keyCode || e.which;
     let tab = e.target;
+
+    console.log(keyCode);
+
 
     let next = () => {
       for (let i = tabs.length; i > 0; i--) {
@@ -100,9 +104,6 @@ module.exports = (() => {
         break;
       case 35:
         end();
-        break;
-      case 9:
-        setfocus();
         break;
       case 13:
         setfocus();
